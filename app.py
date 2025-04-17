@@ -1,6 +1,22 @@
 import os
 
 
+def escolher_opcao():
+    opcao_escolhida = int(input("Escolha uma opção: "))
+
+    match opcao_escolhida:
+        case 1:
+            print("Adicionar restaurante")
+        case 2:
+            print("Listar restaurantes")
+        case 3:
+            print("Ativar restaurante")
+        case 4:
+            finalizar_app()
+        case _:
+            print("Opção inválida!")
+
+
 def exibir_nome_do_programa():
     print(
         """
@@ -27,27 +43,6 @@ def finalizar_app():
     os.system("cls")
     print("Finalizando o aplicativo...\n")
     exit()
-
-
-def escolher_opcao():
-    opcao_escolhida = int(input("Escolha uma opção: "))
-
-    # função para controlar escolha das opções
-    if opcao_escolhida == 1:
-        nome_restaurante = input("Digite o nome do restaurante: ")
-        endereco_restaurante = input("Digite o endereço do restaurante: ")
-        telefone_restaurante = input("Digite o telefone do restaurante: ")
-        print(
-            f"Restaurante {nome_restaurante} cadastrado com sucesso! Endereço: {endereco_restaurante}, Telefone: {telefone_restaurante}."
-        )
-    elif opcao_escolhida == 2:
-        print("Listando restaurantes...")
-        # Aqui você pode adicionar a lógica para listar os restaurantes cadastrados
-    elif opcao_escolhida == 3:
-        nome_restaurante = input("Digite o nome do restaurante a ser ativado: ")
-        print(f"Restaurante {nome_restaurante} ativado com sucesso!")
-    else:
-        finalizar_app()
 
 
 # função principal
