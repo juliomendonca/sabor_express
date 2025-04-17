@@ -1,20 +1,34 @@
 import os
 
+restaurantes = ["Pizza Mia", "Sushi House", "Burger King"]
+
+
+def cadastrar_novo_restaurante():
+    os.system("cls")
+    print("Cadastro de novos restaurantes\n")
+    nome_do_restaurante = input("Digite o nome do restaurante que deseja cadastrar:")
+    restaurantes.append(nome_do_restaurante)
+    print(f"O restaurante {nome_do_restaurante} foi cadastrado com sucesso!")
+    voltar_menu_principal()
+
 
 def escolher_opcao():
-    opcao_escolhida = int(input("Escolha uma opção: "))
+    try:
+        opcao_escolhida = int(input("Escolha uma opção: "))
 
-    match opcao_escolhida:
-        case 1:
-            print("Adicionar restaurante")
-        case 2:
-            print("Listar restaurantes")
-        case 3:
-            print("Ativar restaurante")
-        case 4:
-            finalizar_app()
-        case _:
-            print("Opção inválida!")
+        match opcao_escolhida:
+            case 1:
+                cadastrar_novo_restaurante()
+            case 2:
+                listar_restaurantes()
+            case 3:
+                print("Ativar restaurante")
+            case 4:
+                finalizar_app()
+            case _:
+                opcao_invalida()
+    except Exception:
+        opcao_invalida()
 
 
 def exibir_nome_do_programa():
@@ -45,8 +59,28 @@ def finalizar_app():
     exit()
 
 
+def listar_restaurantes():
+    os.system("cls")
+    print("Lista de Restaurantes\n")
+    for i, restaurante in enumerate(restaurantes, start=1):
+        print(f"{i}. {restaurante}")
+    print("\n")
+    voltar_menu_principal()
+
+
+def opcao_invalida():
+    print("Opção Inválida!\n")
+    voltar_menu_principal()
+
+
+def voltar_menu_principal():
+    input("Digite uma tecla para voltar ao menu principal")
+    main()
+
+
 # função principal
 def main():
+    os.system("cls")
     exibir_nome_do_programa()
     exibir_opcoes()
     escolher_opcao()
